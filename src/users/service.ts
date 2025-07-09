@@ -1,6 +1,6 @@
-import { CreateUserType } from './create-user-schema';
-import User from './models';
-import AuthService from '../auth/service';
+import { CreateUserType } from "./create-user-schema";
+import User from "./models";
+import AuthService from "../auth/service";
 
 class UserService {
   private authService: AuthService;
