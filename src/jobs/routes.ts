@@ -3,9 +3,9 @@ import passport from "passport";
 import { checkSchema, matchedData, validationResult } from "express-validator";
 import createLikedJobSchema from "./create-liked-job-schema";
 import { LikedJobType } from "./create-liked-job-schema";
-import { CreateUserType } from "../users/create-user-schema";
 import httpStatusCodes from "../constants/httpStatusCodes";
 import LikedJobService from "./service";
+import User from "../users/models";
 
 const jobRouter = Router();
 
@@ -23,7 +23,7 @@ jobRouter.post(
 
     const likedJob: LikedJobType = matchedData(req.body);
     // @ts-ignore
-    const user: CreateUserType = req.user;
+    const user: typeof User = req.user;
 
     const service = new LikedJobService();
     const result = await service.create({ likedJob, user });

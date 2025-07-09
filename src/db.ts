@@ -1,12 +1,11 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
+import logger from "./common/logger";
 
 export default async function initDb() {
   try {
-
     await mongoose.connect(process.env.DB_URL as string);
-    console.log('Database connected successfully');
+    logger.info("Database connected successfully");
   } catch (error) {
-    console.log(error);
-
+    logger.info(error);
   }
 }

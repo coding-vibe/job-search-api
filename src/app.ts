@@ -8,6 +8,7 @@ import jwtStrategy from "./auth/jwt-strategy";
 import authRouter from "./auth/routes";
 import usersRouter from "./users/routes";
 import jobRouter from "./jobs/routes";
+import errorHandler from "./common/errorHandler";
 
 initDb();
 
@@ -22,5 +23,6 @@ passport.use("jwt", jwtStrategy);
 app.use("/auth", authRouter);
 app.use("/users", usersRouter);
 app.use("/liked-jobs", jobRouter);
+app.use(errorHandler as express.ErrorRequestHandler);
 
 export default app;
